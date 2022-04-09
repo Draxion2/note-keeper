@@ -4,7 +4,7 @@ const express = require ("express");
 const app = express();
 
 // connect the note functions
-const { createNewNote, validateNote } = require("./public/assets/js/notes");
+const { findById, createNewNote, deleteNote, validateNote } = require("./public/assets/js/notes");
 
 // connect to PORT
 const PORT = process.env.PORT || 3001;
@@ -39,6 +39,12 @@ app.post("/api/notes", (req, res) => {
         const note = createNewNote(req.body, notes);
         res.json(note);
     }
+});
+
+// DELETE a note
+app.delete("/api/notes/:id", (req, res) => {
+    const note = deleteNote(req.body, notes);
+    res.json(note);
 });
 
 // connect to notes page
