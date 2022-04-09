@@ -1,12 +1,7 @@
 const fs = require("fs");
 const path = require("path");
-const notes = require("../../../db/db.json");
 
-function findById(id, notesArray) {
-    const result = notesArray.filter((notesArray) => notesArray.id === id)[0];
-    return result;
-}
-
+// create a new note
 function createNewNote(body, notesArray) {
     const note = body;
     notesArray.push(note);
@@ -17,6 +12,7 @@ function createNewNote(body, notesArray) {
     return note;
 }
 
+// delete a single note
 function deleteNote(body, notesArray) {
     const note = body;
     notesArray.pop(note);
@@ -27,6 +23,7 @@ function deleteNote(body, notesArray) {
     return note;
 }
 
+// validate a new note to be sure all fields exist
 function validateNote(note) {
     if (!note.title || typeof note.title !== "string") {
         return false;
@@ -37,8 +34,8 @@ function validateNote(note) {
     return true;
 }
 
+// export the note methods
 module.exports = {
-    findById,
     createNewNote,
     deleteNote,
     validateNote

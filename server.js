@@ -1,10 +1,9 @@
-const fs = require("fs");
 const path = require("path");
 const express = require ("express");
 const app = express();
 
 // connect the note functions
-const { findById, createNewNote, deleteNote, validateNote } = require("./public/assets/js/notes");
+const { createNewNote, deleteNote, validateNote } = require("./data/notes");
 
 // connect to PORT
 const PORT = process.env.PORT || 3001;
